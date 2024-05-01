@@ -14,11 +14,8 @@ import java.util.List;
 public class AccountPage {
     private WebDriver driver;
     private ElementUtil eleUtil;
-
     private By inputSearchBy = By.name("search");
-
     private By accHeadersBy = By.xpath("//div[@id='content']/h2");
-
     private By linkLogoutBy = By.linkText("Logout");
 
     public AccountPage(WebDriver driver) {
@@ -27,29 +24,29 @@ public class AccountPage {
     }
 
     public String getAccPageTitle() {
-        String title = eleUtil.waitForTitleIsAndFetch(AppConstants.DEFAULT_MEDIUM_TIME_OUT,AppConstants.ACCOUNTS_PAGE_TITLE_VALUE);
+        String title = eleUtil.waitForTitleIsAndFetch(AppConstants.DEFAULT_MEDIUM_TIME_OUT, AppConstants.ACCOUNTS_PAGE_TITLE_VALUE);
         System.out.println("page title is: " + title);
         return title;
     }
 
     public String getAccPageURL() {
-        String URL = eleUtil.waitForURLContainsAndFetch(AppConstants.DEFAULT_MEDIUM_TIME_OUT,AppConstants.ACCOUNTS_PAGE_URL_FRACTION_VALUE);
-        System.out.println("page url is: "+URL);
+        String URL = eleUtil.waitForURLContainsAndFetch(AppConstants.DEFAULT_MEDIUM_TIME_OUT, AppConstants.ACCOUNTS_PAGE_URL_FRACTION_VALUE);
+        System.out.println("page url is: " + URL);
         return URL;
     }
 
-    public boolean isLogoutLinkExists(){
-       return eleUtil.waitForElementVisible(linkLogoutBy,AppConstants.DEFAULT_MEDIUM_TIME_OUT).isDisplayed();
+    public boolean isLogoutLinkExists() {
+        return eleUtil.waitForElementVisible(linkLogoutBy, AppConstants.DEFAULT_MEDIUM_TIME_OUT).isDisplayed();
     }
 
-    public boolean isSearchExist(){
-        return eleUtil.waitForElementVisible(inputSearchBy,AppConstants.DEFAULT_MEDIUM_TIME_OUT).isDisplayed();
+    public boolean isSearchExist() {
+        return eleUtil.waitForElementVisible(inputSearchBy, AppConstants.DEFAULT_MEDIUM_TIME_OUT).isDisplayed();
     }
 
-    public  List<String> getAccountsPageHeadersList() {
-        List<WebElement> accHeaderList = eleUtil.waitForElementsVisible(accHeadersBy,AppConstants.DEFAULT_SHORT_TIME_OUT);
+    public List<String> getAccountsPageHeadersList() {
+        List<WebElement> accHeaderList = eleUtil.waitForElementsVisible(accHeadersBy, AppConstants.DEFAULT_SHORT_TIME_OUT);
         List<String> accHeaderValList = new ArrayList<String>();
-        for(WebElement e: accHeaderList) {
+        for (WebElement e : accHeaderList) {
             String value = e.getText();
             accHeaderValList.add(value);
         }

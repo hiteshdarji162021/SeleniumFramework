@@ -1,36 +1,35 @@
 package bacancy.qa.opencart.tests;
 
 import bacancy.qa.opencart.base.BaseTest;
+import bacancy.qa.opencart.constants.AppConstants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginPageTest extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void loginPageTitleTest() {
 
         String actualTitle = loginPage.getLoginPageTitle();
-        Assert.assertEquals(actualTitle,"Account Login");
+        Assert.assertEquals(actualTitle, AppConstants.LOGIN_PAGE_TITLE_VALUE);
     }
 
-    @Test
+    @Test(priority = 2)
     public void loginPageURLTest() {
 
         String actualURL = loginPage.getLoginPageURL();
-        Assert.assertTrue(actualURL.contains("route=account/login"));
+        Assert.assertTrue(actualURL.contains(AppConstants.LOGIN_PAGE_URL_FRACTION_VALUE));
     }
 
-    @Test
+    @Test(priority = 3)
     public void forgotPwdLinkExistTest() {
-        boolean status= loginPage.isForgotPwdLinkExist();
+        boolean status = loginPage.isForgotPwdLinkExist();
         Assert.assertTrue(status);
     }
 
-    @Test
+    @Test(priority = 4)
     public void loginTest() {
-        accPage= loginPage.doLogin("hiteshdarji100@gmail.com","9925472398@hH");
+        accPage = loginPage.doLogin("hiteshdarji100@gmail.com", "9925472398@hH");
         Assert.assertTrue(accPage.isLogoutLinkExists());
-
     }
-
 }

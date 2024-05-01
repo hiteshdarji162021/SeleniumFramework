@@ -16,9 +16,9 @@ public class BaseTest {
     WebDriver driver;
     protected LoginPage loginPage;
     protected AccountPage accPage;
+
     @BeforeTest
     public void setup() {
-
         df = new DriverFactory();
         driver = df.initDriver("chrome");
         loginPage = new LoginPage(driver);
