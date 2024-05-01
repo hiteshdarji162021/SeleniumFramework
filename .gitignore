@@ -3,6 +3,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
@@ -11,6 +12,12 @@ target/
 *.iws
 *.iml
 *.ipr
+.mvn
+.idea
+mvnw
+mvnw.cmd
+browsers.json
+
 
 ### Eclipse ###
 .apt_generated
