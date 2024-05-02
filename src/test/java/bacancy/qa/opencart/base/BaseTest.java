@@ -3,24 +3,29 @@ package bacancy.qa.opencart.base;
 import bacancy.qa.opencart.factory.DriverFactory;
 import bacancy.qa.opencart.tests.AccountPage;
 import bacancy.qa.opencart.tests.LoginPage;
+import bacancy.qa.opencart.tests.ProductInfoPage;
+import bacancy.qa.opencart.tests.SearchPage;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import java.util.Properties;
+
 public class BaseTest {
 
-    private static final Logger log = LoggerFactory.getLogger(BaseTest.class);
     DriverFactory df;
     WebDriver driver;
     protected LoginPage loginPage;
     protected AccountPage accPage;
+    protected Properties prop;
+    protected SearchPage searchPage;
+    protected ProductInfoPage productInfoPage;
 
     @BeforeTest
     public void setup() {
         df = new DriverFactory();
-        driver = df.initDriver("chrome");
+        prop = df.initProp();
+        driver = df.initDriver(prop);
         loginPage = new LoginPage(driver);
     }
 

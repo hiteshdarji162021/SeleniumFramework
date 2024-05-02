@@ -17,16 +17,22 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import bacancy.qa.opencart.factory.DriverFactory;
 
 public class ElementUtil {
     private WebDriver driver;
+    private JavaScriptUtil jsUtil;
 
     public ElementUtil(WebDriver driver) {
-        this.driver= driver;
+        this.driver = driver;
+        jsUtil = new JavaScriptUtil(driver);
     }
 
     public WebElement getElement(By locator) {
         WebElement element = driver.findElement(locator);
+        if (Boolean.parseBoolean(DriverFactory.highlight)) {
+            jsUtil.flash(element);
+        }
         return element;
     }
 
@@ -159,6 +165,7 @@ public class ElementUtil {
     }
 
     // ************************Wait Utils **********************//
+
     /**
      * An expectation for checking that an element is present on the DOM of a page.
      * This does not necessarily mean that the element is visible.
@@ -215,7 +222,6 @@ public class ElementUtil {
     }
 
     /**
-     *
      * @param timeOut
      * @return
      */

@@ -29,7 +29,7 @@ public class LoginPageTest extends BaseTest {
 
     @Test(priority = 4)
     public void loginTest() {
-        accPage = loginPage.doLogin("hiteshdarji100@gmail.com", "9925472398@hH");
+        accPage = loginPage.doLogin(prop.getProperty("username").trim(), prop.getProperty("password").trim());
         Assert.assertTrue(accPage.isLogoutLinkExists());
     }
 }

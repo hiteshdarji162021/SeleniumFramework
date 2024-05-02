@@ -1,6 +1,5 @@
 package bacancy.qa.opencart.tests;
 
-
 import bacancy.qa.opencart.constants.AppConstants;
 import bacancy.qa.opencart.utils.ElementUtil;
 import org.openqa.selenium.By;
@@ -17,6 +16,7 @@ public class AccountPage {
     private By inputSearchBy = By.name("search");
     private By accHeadersBy = By.xpath("//div[@id='content']/h2");
     private By linkLogoutBy = By.linkText("Logout");
+    private By searchIconBy = By.xpath("//div[@id='search']//button");
 
     public AccountPage(WebDriver driver) {
         this.driver = driver;
@@ -51,5 +51,16 @@ public class AccountPage {
             accHeaderValList.add(value);
         }
         return accHeaderValList;
+    }
+
+    public SearchPage performSearch(String searchKey) {
+        if (isSearchExist()) {
+            eleUtil.doSendKeys(inputSearchBy, searchKey);
+            eleUtil.doClick(searchIconBy);
+            return new SearchPage(driver);
+        } else {
+            System.out.println("search field is not present on the page....");
+            return null;
+        }
     }
 }
