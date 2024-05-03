@@ -9,14 +9,18 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+reports
 *.iws
 *.iml
 *.ipr
 .mvn
 .idea
+allure-results
 mvnw
 mvnw.cmd
 browsers.json
+logs
+screenshot
 
 
 ### Eclipse ###

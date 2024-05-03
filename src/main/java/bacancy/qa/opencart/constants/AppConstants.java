@@ -14,4 +14,9 @@ public class AppConstants {
     public static final int ACCOUNTS_PAGE_HEADERS_COUNT = 4;
     public static final List<String> EXPECTED_ACCOUNTS_PAGE_HEADERS_LIST = Arrays.asList("My Account", "My Orders",
             "My Affiliate Account", "Newsletter");
+    public static final String USER_REG_SUCCESS_MESSG = "Your Account Has Been Created";
+
+
+    //*********************Sheet Names***********************//
+    public static final String REGISTER_SHEET_NAME = "register";
 }

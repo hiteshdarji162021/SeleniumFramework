@@ -1,13 +1,11 @@
 package bacancy.qa.opencart.base;
 
 import bacancy.qa.opencart.factory.DriverFactory;
-import bacancy.qa.opencart.tests.AccountPage;
-import bacancy.qa.opencart.tests.LoginPage;
-import bacancy.qa.opencart.tests.ProductInfoPage;
-import bacancy.qa.opencart.tests.SearchPage;
+import bacancy.qa.opencart.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.asserts.SoftAssert;
 
 import java.util.Properties;
 
@@ -20,6 +18,8 @@ public class BaseTest {
     protected Properties prop;
     protected SearchPage searchPage;
     protected ProductInfoPage productInfoPage;
+    protected SoftAssert softAssert;
+    protected RegisterPage registerPage;
 
     @BeforeTest
     public void setup() {
@@ -27,6 +27,7 @@ public class BaseTest {
         prop = df.initProp();
         driver = df.initDriver(prop);
         loginPage = new LoginPage(driver);
+        softAssert = new SoftAssert();
     }
 
     @AfterTest
