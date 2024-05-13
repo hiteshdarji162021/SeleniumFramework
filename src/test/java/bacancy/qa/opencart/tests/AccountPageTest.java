@@ -11,7 +11,7 @@ import java.util.List;
 
 @Epic("EPIC- 200: design account page for open cart app")
 @Story("US-Account: 201: account page feature for open cart")
-public class AccountPageTest extends BaseTest {
+public class  AccountPageTest extends BaseTest {
 
     @BeforeClass
     public void accPageSetup() {
