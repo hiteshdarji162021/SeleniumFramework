@@ -71,7 +71,8 @@ public class DriverFactory {
                         break;
                     default:
                         System.out.println("....Wrong env is passed....No need to run the test cases....");
-                        throw new FrameworkException("WRONG ENV IS PASSED...");
+                        break;
+                        //throw new FrameworkException("WRONG ENV IS PASSED...");
                 }
             }
         } catch (FileNotFoundException e) {
