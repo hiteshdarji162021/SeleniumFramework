@@ -28,7 +28,7 @@ public class LoginPageTest extends BaseTest {
     @Test(priority = 2)
     public void loginPageURLTest() {
         MDC.put("testClassName", this.getClass().getSimpleName());
-        logger.info("This is a log message from loginPageURLTest");
+        logger.info("This is  log message from loginPageURLTest");
         String actualURL = loginPage.getLoginPageURL();
         Assert.assertTrue(actualURL.contains(AppConstants.LOGIN_PAGE_URL_FRACTION_VALUE));
     }
