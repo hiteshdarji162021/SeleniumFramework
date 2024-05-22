@@ -22,7 +22,9 @@ public class OptionsManager {
             co.addArguments("--headless");
             System.out.println("====running chrome in headless mode");
         }
-        if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) co.addArguments("--incognito");
+        if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) {
+            co.addArguments("--incognito");
+        }
         return co;
     }
 
@@ -32,7 +34,9 @@ public class OptionsManager {
             fo.addArguments("--headless");
             System.out.println("====running firefox in headless mode");
         }
-        if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) fo.addArguments("--incognito");
+        if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) {
+            fo.addArguments("--incognito");
+        }
         return fo;
     }
 
@@ -42,7 +46,9 @@ public class OptionsManager {
             eo.addArguments("--headless");
             System.out.println("====running edge in headless mode");
         }
-        if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) eo.addArguments("--incognito");
+        if (Boolean.parseBoolean(prop.getProperty("incognito").trim())) {
+            eo.addArguments("--incognito");
+        }
         return eo;
     }
 }

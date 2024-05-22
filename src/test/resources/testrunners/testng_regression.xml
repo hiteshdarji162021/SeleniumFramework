@@ -13,21 +13,25 @@
     </listeners>
 
     <test name="Login Page Test">
+        <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="bacancy.qa.opencart.tests.LoginPageTest"/>
         </classes>
     </test>
     <test name="Account Page Test">
+        <parameter name="browser" value="firefox"></parameter>
         <classes>
             <class name="bacancy.qa.opencart.tests.AccountPageTest"/>
         </classes>
     </test>
     <test name="Product Page Info Test">
+        <parameter name="browser" value="edge"></parameter>
         <classes>
             <class name="bacancy.qa.opencart.tests.ProductPageInfoTest"/>
         </classes>
     </test>
     <test name="Registration Page Test">
+        <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="bacancy.qa.opencart.tests.RegisterPageTest"/>
         </classes>

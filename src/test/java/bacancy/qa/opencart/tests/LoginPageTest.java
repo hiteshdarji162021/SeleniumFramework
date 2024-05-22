@@ -39,7 +39,7 @@ public class LoginPageTest extends BaseTest {
         MDC.put("testClassName", this.getClass().getSimpleName());
         logger.info("This is a log message from forgotPwdLinkExistTest");
         boolean status = loginPage.isForgotPwdLinkExist();
-        Assert.assertTrue(status);
+        Assert.assertTrue(false);
     }
     @Severity(SeverityLevel.BLOCKER)
     @Description("...checking user is able to login to app with correct username and password...")

@@ -120,7 +120,6 @@
                    <!-- <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>-->
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testrunners/testng_regression.xml</suiteXmlFile>
-                        <suiteXmlFile>src/test/resources/testrunners/testng_sanity.xml</suiteXmlFile>
                          <!--suppress UnresolvedMavenProperty.Below file details coming from Jenkins file -->
                        <!-- <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>-->
                     </suiteXmlFiles>

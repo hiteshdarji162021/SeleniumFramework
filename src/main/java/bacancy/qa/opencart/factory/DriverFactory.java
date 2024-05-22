@@ -8,12 +8,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
 public class DriverFactory {
@@ -28,13 +30,25 @@ public class DriverFactory {
         highlight = prop.getProperty("highlight");
         String browserName = prop.getProperty("browser");
         if (browserName.equalsIgnoreCase("chrome")) {
+            if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+                init_remoteDriver("chrome");
+            } else {
             tlDriver.set(new ChromeDriver(optionsmanager.getChromeOptions()));
+            }
         } else if (browserName.equalsIgnoreCase("firefox")) {
-            tlDriver.set(new FirefoxDriver(optionsmanager.getFirefoxOptions()));
+            if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+                init_remoteDriver("firefox");
+            } else {
+                tlDriver.set(new FirefoxDriver(optionsmanager.getFirefoxOptions()));
+            }
         } else if (browserName.equalsIgnoreCase("safari")) {
             tlDriver.set(new SafariDriver());
         } else if (browserName.equalsIgnoreCase("edge")) {
-            tlDriver.set(new EdgeDriver(optionsmanager.getEdgeOptions()));
+            if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+                init_remoteDriver("edge");
+            } else {
+                tlDriver.set(new EdgeDriver(optionsmanager.getEdgeOptions()));
+            }
         } else {
             System.out.println("please pass the right browse..." + browserName);
             throw new FrameworkException("NO BROWSER FOUND EXCEPTION...");
@@ -60,14 +74,17 @@ public class DriverFactory {
         try {
             if (envName == null) {
                 System.out.println("no env is passed....Running tests on QA env...");
-                ip = new FileInputStream("./src/test/resources/config/config.properties");
+                ip = new FileInputStream("./src/test/resources/config/qa.properties");
             } else {
                 switch (envName.toLowerCase().trim()) {
                     case "dev":
                         ip = new FileInputStream("./src/test/resources/config/dev.properties");
                         break;
-                    case "stage":
-                        ip = new FileInputStream("./src/test/resources/config/stage.properties");
+                    case "qa":
+                        ip = new FileInputStream("./src/test/resources/config/qa.properties");
+                        break;
+                    case "prod":
+                        ip = new FileInputStream("./src/test/resources/config/prod.properties");
                         break;
                     default:
                         System.out.println("....Wrong env is passed....No need to run the test cases....");
@@ -98,5 +115,28 @@ public class DriverFactory {
             e.printStackTrace();
         }
         return path;
+    }
+    private void init_remoteDriver(String browserName) {
+        System.out.println("Running grid server on browser name==>"+browserName);
+        try {
+            switch (browserName.toLowerCase()) {
+                case "chrome":
+                    tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsmanager.getChromeOptions()));
+                    break;
+                case "firefox":
+                    tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsmanager.getFirefoxOptions()));
+                    break;
+                case "edge":
+                    tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsmanager.getEdgeOptions()));
+                    break;
+                default:
+                    System.out.println("Please pass the right browser for remote execution");
+                    break;
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+
+        }
     }
 }
